@@ -40,6 +40,7 @@ function handle_msg(msg) {
       break;
     case "scan":
       QR.stop();
+      console.log(msg.data);
       Modules.show(msg.data);
       break;
   }

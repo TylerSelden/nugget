@@ -21,3 +21,8 @@ export function start() {
 export function stop() {
   qrScanner.stop();
 }
+
+//// dev
+window.scan = (data) => {
+  Socket.send({ type: "scan", id: data });
+}

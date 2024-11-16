@@ -4,7 +4,7 @@ global.modules = {
   base: {
     type: "base",
     scan: () => {
-      return this;
+    
     },
     id: 0
   },
@@ -12,7 +12,7 @@ global.modules = {
     type: "active",
     active: false,
     scan: () => {
-      return this;
+
     },
     end: () => {
       this.active = false;
@@ -22,7 +22,7 @@ global.modules = {
   log: {
     type: "passive",
     scan: () => {
-      return this;
+    
     },
     id: -1
   }

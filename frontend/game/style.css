@@ -62,11 +62,15 @@ body {
 
 
 .module {
+  margin: auto;
   margin-top: 20px;
+  padding: 40px;
+  padding-top: 60px;
   border: 1px solid #8c8c8c;
-  padding: 20px;
   border-radius: 8px;
   background-color: #333;
+  min-width: 60%;
+  width: fit-content;
 }
 
 .content-container {

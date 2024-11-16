@@ -9,14 +9,16 @@ const finalhandler = require("finalhandler");
 const ip = require("ip");
 const path = require("path");
 
-for (var key in global.config) {
-  var val = prompt(`${key} [${global.config[key]}]: `);
-  if (val == "") continue;
+if (!process.argv.includes("-d")) {
+  for (var key in global.config) {
+    var val = prompt(`${key} [${global.config[key]}]: `);
+    if (val == "") continue;
 
-  if (typeof(global.config[key]) == "number") val = parseInt(val);
-  if (typeof(global.config[key]) == "boolean") val = (val === "true");
+    if (typeof(global.config[key]) == "number") val = parseInt(val);
+    if (typeof(global.config[key]) == "boolean") val = (val === "true");
 
-  global.config[key] = val;
+    global.config[key] = val;
+  }
 }
 
 require("./create_modules.js");

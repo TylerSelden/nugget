@@ -14,9 +14,16 @@ export function show_players(players) {
     player.innerText = key;
     if (Game.players[key]) player.classList.add("ready");
     elems.players.appendChild(player);
-    if (i < keys.length - 1) elems.players.appendChild(document.createTextNode(", "));
+
+    if (i < keys.length - 1) {
+      const comma = document.createElement("span");
+      comma.innerText = ", ";
+      if (Game.players[key]) comma.classList.add("ready");
+      elems.players.appendChild(comma);
+    }
   });
 }
+
 
 export function show_screen(screen) {
   screen += "_screen";

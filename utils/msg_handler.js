@@ -8,8 +8,9 @@ function handle_msg(conn, msg) {
     case "scan":
       handle_scan(conn, msg);
       break;
-    default:
-      throw new Error("Invalid command.");
+    case "ready":
+      global.clients[conn.name].ready = true;
+      send_players();
       break;
   }
 }
@@ -30,8 +31,11 @@ function join(conn, msg) {
 
 function handle_scan(conn, msg) {
   if (!global.ids[msg.id]) return;
+  
+  var module = global.ids[msg.id];
+  if (module.scan) module.scan();
 
-  send(conn, "scan", global.ids[msg.id].scan(msg));
+  send(conn, "scan", global.ids[msg.id]);
 }
 
 
