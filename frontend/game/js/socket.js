@@ -3,7 +3,6 @@ import * as Utils from "./utils.js";
 var socket;
 
 export function init(addr, port, name) {
-  console.log(`Connecting to ws${location.protocol == "https:" ? 's' : ''}://${addr}:${port}/ws`);
   socket = new WebSocket(`ws${location.protocol == "https:" ? 's' : ''}://${addr}:${port}/ws`);
   socket.onopen = function() {
     console.log("Socket connected");
