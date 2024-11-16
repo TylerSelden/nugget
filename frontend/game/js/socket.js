@@ -1,3 +1,5 @@
+import * as Utils from "./utils.js";
+
 var socket;
 
 export function init(addr, port, name) {
@@ -7,14 +9,14 @@ export function init(addr, port, name) {
     console.log("Socket connected");
   };
   socket.onclose = function() {
-    err("Socket Error", "Connection closed");
+    Utils.err("Socket Error", "Connection closed");
   };
   socket.onmessage = function(event) {
     var data = JSON.parse(event.data);
     handle_msg(data);
   };
   socket.onerror = function(event) {
-    err("Socket Error", event);
+    Utils.err("Socket Error", event);
   }
 
   socket.onopen = function() {
@@ -26,14 +28,14 @@ function handle_msg(msg) {
   switch (msg.type) {
     case "players":
       if (!Game.players) show_screen("main_screen");
-      show_players(msg.data);
+      Utils.show_players(msg.data);
       break;
     case "err":
-      err("Something went wrong", msg.data);
+      Utils.err("Something went wrong", msg.data);
       break;
   }
 }
-
+/*
 function show_players(players) {
   Game.players = players;
   elems.players.innerHTML = "";
@@ -47,13 +49,14 @@ function show_players(players) {
     if (i < keys.length - 1) elems.players.appendChild(document.createTextNode(", "));
   });
 }
-
+*/
 export function send(data) {
   socket.send(JSON.stringify(data));
 }
-
+/*
 export function err(header, msg) {
   elems.err_header.innerText = header;
   elems.err_msg.innerText = msg;
   show_screen("err_screen");
 }
+*/

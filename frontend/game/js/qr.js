@@ -1,3 +1,5 @@
+import * as Utils from "./utils.js";
+
 const qrScanner = new Html5Qrcode("reader");
 
 export function startScanner() {
@@ -10,5 +12,9 @@ export function startScanner() {
     (decodedText) => {
       console.log(decodedText);
     }
-  );
+  ).then(() => {
+    elems.main_header.innerText = "Go to Base to start";
+  }).catch((err) => {
+    Utils.err("Camera access denied", "Camera access is required for this game. Please refresh and allow camera access.");
+  });
 }

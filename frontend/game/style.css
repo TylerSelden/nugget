@@ -24,6 +24,10 @@ body {
   color: #f5f5f5;
 }
 
+.navbar-custom a:hover {
+  color: #b5b5b5;
+}
+
 .screen {
   display: none;
   padding: 20px;

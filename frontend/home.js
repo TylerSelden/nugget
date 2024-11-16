@@ -2,7 +2,7 @@ function e(id) {
   return document.getElementById(id);
 }
 
-function checkValues() {
+function checkValues(event) {
   var addr = e("addr").value.trim();
   var port = e("port").value.trim();
   var name = e("name").value.trim();
@@ -10,6 +10,7 @@ function checkValues() {
   console.log(addr == "" , port == "" , name == "" , parseInt(port) < 1 , parseInt(port) > 65535)
   if (addr == "" || port == "" || name == "" || parseInt(port) < 1 || parseInt(port) > 65535) return e("begin").disabled = true;
   e("begin").disabled = false;
+  if (event && event.key == "Enter") begin();
 }
 
 window.onload = function() {

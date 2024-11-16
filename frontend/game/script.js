@@ -1,3 +1,4 @@
+import * as Utils from "./js/utils.js";
 import * as Socket from "./js/socket.js";
 import * as QR from "./js/qr.js";
 
@@ -11,7 +12,7 @@ window.onload = function() {
 
   var params = new URLSearchParams(window.location.search);
 
-  if (!params.has('addr') || !params.has('port')) return Socket.err('Malformed URL', 'No address or port specified');
+  if (!params.has('addr') || !params.has('port')) return Utils.err('Malformed URL', 'No address or port specified');
 
   Socket.init(params.get('addr'), params.get('port'), params.get('name'));
 
@@ -27,5 +28,5 @@ window.show_screen = function(screen) {
 }
 
 addEventListener("error", (evt) => {
-  Socket.err('Something went wrong', evt.message);
+  Utils.err('Something went wrong', evt.message);
 });

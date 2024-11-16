@@ -21,11 +21,11 @@
     <br>
 
     <input type="text" class="form-control form-control-lg mb-3" id="addr" placeholder="Server address"
-      oninput="checkValues()">
+      onkeyup="checkValues(event)">
     <input type="number" min="1" max="65535" class="form-control form-control-lg mb-3" id="port"
-      placeholder="Server port" oninput="checkValues()">
+      placeholder="Server port" onkeyup="checkValues(event)">
     <input type="text" class="form-control form-control-lg mb-3" id="name"
-      placeholder="Player name" oninput="checkValues()">
+      placeholder="Player name" onkeyup="checkValues(event)">
 
     <br>
     <button id="begin" class="btn btn-custom btn-lg btn-block mt-3" onclick="begin()" disabled>Begin</button>
