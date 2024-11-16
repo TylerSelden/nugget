@@ -3,6 +3,8 @@ const { handle_msg } = require("./msg_handler.js");
 const { send, send_players } = require("./misc.js");
 
 function server_main(req) {
+  if (req.resourceURL.pathname !== "/ws") return req.reject();
+
   var conn = req.accept(null, req.origin);
 
   conn.on("message", (msg) => {
@@ -11,9 +13,8 @@ function server_main(req) {
     try {
       msg = JSON.parse(msg);
       handle_msg(conn, msg);
-    } catch (err) {
+    } catch {
       send(conn, "err", "Something went wrong.");
-      console.error(err);
     }
   });
 

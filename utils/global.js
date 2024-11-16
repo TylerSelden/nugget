@@ -1,8 +1,9 @@
 var global = {
   config: {
-    port: 8080,
+    https: true,
+    port: 3000,
     strikes: 3,
-    name: "U.S.S. Enterprise"
+    name: "U.S.S. Enterprise",
   },
   game: {
     started: false,

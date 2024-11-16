@@ -9,10 +9,12 @@
   "author": "Tyler Selden",
   "license": "MIT",
   "dependencies": {
+    "finalhandler": "^1.3.1",
     "http": "^0.0.1-security",
-    "http-server": "^14.1.1",
+    "https": "^1.0.0",
     "ip": "^2.0.1",
     "prompt-sync": "^4.2.0",
+    "serve-static": "^1.16.2",
     "websocket": "^1.0.35"
   }
 }

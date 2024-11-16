@@ -1,8 +1,8 @@
 var socket;
 
 export function init(addr, port, name) {
-  console.log(`Connecting to ws://${addr}:${port}`);
-  socket = new WebSocket(`ws://${addr}:${port}`);
+  console.log(`Connecting to ws${location.protocol == "https:" ? 's' : ''}://${addr}:${port}/ws`);
+  socket = new WebSocket(`ws${location.protocol == "https:" ? 's' : ''}://${addr}:${port}/ws`);
   socket.onopen = function() {
     console.log("Socket connected");
   };

@@ -114,7 +114,7 @@
     }
 
     function connectWebSocket() {
-      socket = new WebSocket("ws://localhost:8081");
+      socket = new WebSocket("wss://server.benti.dev:3000/ws");
 
       socket.onopen = function () {
         setStatus("Connected");

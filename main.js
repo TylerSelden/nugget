@@ -1,15 +1,15 @@
 var ip = require("ip");
 
 var global = require("./utils/global.js");
-const { server, wsHttpServer } = require("./utils/create_server.js");
+const { server, httpServer } = require("./utils/create_server.js");
 const server_main = require("./utils/server_main.js");
 
 server.on("request", server_main);
-wsHttpServer.listen(global.config.port + 1);
+httpServer.listen(global.config.port);
 
 console.log(`${global.config.name} is ready for boarding!
   
-  Go to http://${ip.address()}:${global.config.port} on your devices!
+  Go to http${global.config.https ? 's' : ''}://${ip.address()}:${global.config.port} on your devices!
 
   Address: ${ip.address()}
-  Port: ${global.config.port + 1}`);
+  Port: ${global.config.port}`);

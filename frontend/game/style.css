@@ -40,7 +40,9 @@ body {
 
 #qr_scanner {
   width: 100%;
-  height: 100%;
+  height: auto;
+  max-width: 400px;
+  margin: 0 auto;
   display: flex;
   justify-content: center;
   align-items: center;

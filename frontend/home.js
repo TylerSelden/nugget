@@ -15,7 +15,7 @@ function checkValues() {
 window.onload = function() {
   var url = new URL(window.location.href);
   e("addr").value = url.hostname;
-  e("port").value = parseInt(url.port) + 1;
+  e("port").value = url.port;
   
   checkValues();
 }
