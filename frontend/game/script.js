@@ -16,15 +16,7 @@ window.onload = function() {
 
   Socket.init(params.get('addr'), params.get('port'), params.get('name'));
 
-  QR.startScanner();
-}
-
-window.show_screen = function(screen) {
-  for (var key in elems) {
-    if (key.includes("screen")) elems[key].classList.add("hidden")
-  }
-  elems[screen].classList.remove("hidden");
-  elems[screen].style.display = "block";
+  QR.start();
 }
 
 addEventListener("error", (evt) => {

@@ -13,8 +13,8 @@ function server_main(req) {
     try {
       msg = JSON.parse(msg);
       handle_msg(conn, msg);
-    } catch {
-      send(conn, "err", "Something went wrong.");
+    } catch (err) {
+      send(conn, "err", err.message);
     }
   });
 

@@ -56,7 +56,8 @@ body {
 #reader {
   width: 100%;
   height: 100%;
-  position: absolute; /* Ensure it takes the full space of its parent */
+  position: absolute;
+  transform: scaleX(-1); /* TEMPORARY */
 }
 
 

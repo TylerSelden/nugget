@@ -1,7 +1,7 @@
 export function err(header, msg) {
   elems.err_header.innerText = header;
   elems.err_msg.innerText = msg;
-  show_screen("err_screen");
+  show_screen("err");
 }
 
 export function show_players(players) {
@@ -16,4 +16,12 @@ export function show_players(players) {
     elems.players.appendChild(player);
     if (i < keys.length - 1) elems.players.appendChild(document.createTextNode(", "));
   });
+}
+
+export function show_screen(screen) {
+  screen += "_screen";
+  for (var key in elems) if (key.includes("screen")) elems[key].classList.add("hidden");
+
+  elems[screen].classList.remove("hidden");
+  elems[screen].style.display = "block";
 }

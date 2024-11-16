@@ -1,37 +1,41 @@
-const { type } = require("os");
 var global = require("./global.js");
 
 global.modules = {
   base: {
     type: "base",
-    start: function() {
-      
+    scan: () => {
+      return this;
     },
     id: 0
   },
   hot_cocoa: {
     type: "active",
     active: false,
-    start: function() {
-      
+    scan: () => {
+      return this;
     },
-    end: function() {
+    end: () => {
       this.active = false;
     },
     id: -1
   },
   log: {
     type: "passive",
-    start: function() {
-      
+    scan: () => {
+      return this;
     },
     id: -1
   }
 }
+global.ids = { 0: global.modules.base };
 
 var ids = Array.from({length: Object.keys(global.modules).length - 1}, (_, i) => i + 1);
 for (var key in global.modules) {
+  global.modules[key].name = key;
+
   if (key !== "base") {
-    global.modules[key].id = ids.splice(Math.floor(Math.random() * ids.length), 1)[0];
+    var id = ids.splice(Math.floor(Math.random() * ids.length), 1)[0];
+    global.modules[key].id = id;
+    global.ids[id] = global.modules[key];
   }
 }

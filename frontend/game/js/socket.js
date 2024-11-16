@@ -1,4 +1,6 @@
 import * as Utils from "./utils.js";
+import * as Modules from "./modules.js";
+import * as QR from "./qr.js";
 
 var socket;
 
@@ -23,39 +25,22 @@ export function init(addr, port, name) {
   };
 }
 
-function handle_msg(msg) {
-  switch (msg.type) {
-    case "players":
-      if (!Game.players) show_screen("main_screen");
-      Utils.show_players(msg.data);
-      break;
-    case "err":
-      Utils.err("Something went wrong", msg.data);
-      break;
-  }
-}
-/*
-function show_players(players) {
-  Game.players = players;
-  elems.players.innerHTML = "";
-  
-  const keys = Object.keys(Game.players);
-  keys.forEach((key, i) => {
-    const player = document.createElement("span");
-    player.innerText = key;
-    if (Game.players[key]) player.classList.add("ready");
-    elems.players.appendChild(player);
-    if (i < keys.length - 1) elems.players.appendChild(document.createTextNode(", "));
-  });
-}
-*/
 export function send(data) {
   socket.send(JSON.stringify(data));
 }
-/*
-export function err(header, msg) {
-  elems.err_header.innerText = header;
-  elems.err_msg.innerText = msg;
-  show_screen("err_screen");
+
+function handle_msg(msg) {
+  switch (msg.type) {
+    case "err":
+      Utils.err("Something went wrong", msg.data);
+      break;
+    case "players":
+      if (!Game.players) Utils.show_screen("main");
+      Utils.show_players(msg.data);
+      break;
+    case "scan":
+      QR.stop();
+      Modules.show(msg.data);
+      break;
+  }
 }
-*/
