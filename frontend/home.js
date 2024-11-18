@@ -8,7 +8,7 @@ function checkValues(event) {
   var name = e("name").value.trim();
 
   console.log(addr == "" , port == "" , name == "" , parseInt(port) < 1 , parseInt(port) > 65535)
-  if (addr == "" || port == "" || name == "" || parseInt(port) < 1 || parseInt(port) > 65535) return e("begin").disabled = true;
+  if (addr == "" || port == "" || name == "" || name.length < 3 || name.length > 12|| parseInt(port) < 1 || parseInt(port) > 65535) return e("begin").disabled = true;
   e("begin").disabled = false;
   if (event && event.key == "Enter") begin();
 }

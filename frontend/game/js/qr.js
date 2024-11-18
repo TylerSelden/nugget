@@ -4,13 +4,17 @@ import * as Socket from "./socket.js";
 const qrScanner = new Html5Qrcode("reader");
 
 export function start() {
+  Utils.show_screen("main");
+  if (qrScanner.state) return qrScanner.state = 2;
+  qrScanner.state = 2;
+
   qrScanner.start(
     { facingMode: "environment" },
     {
       fps: 10,
       qrbox: { width: 250, height: 250 }
     },
-    (data) => { Socket.send({ type: "scan", id: data })}
+    (data) => { if (qrScanner.state == 2) Socket.send({ type: "scan", id: data }) }
   ).then(() => {
     elems.main_header.innerText = "Go to Base to start";
   }).catch((err) => {
@@ -19,7 +23,7 @@ export function start() {
 }
 
 export function stop() {
-  qrScanner.stop();
+  qrScanner.state = 1;
 }
 
 //// dev

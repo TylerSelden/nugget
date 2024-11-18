@@ -1,32 +1,51 @@
 var global = require("./global.js");
 
-global.modules = {
-  base: {
-    type: "base",
-    scan: () => {
-    
-    },
-    id: 0
-  },
-  hot_cocoa: {
-    type: "active",
-    active: false,
-    scan: () => {
-
-    },
-    end: () => {
-      this.active = false;
-    },
-    id: -1
-  },
-  log: {
-    type: "passive",
-    scan: () => {
-    
-    },
-    id: -1
+class Module {
+  constructor(friendly, type, notes, desc, scan, end) {
+    this.friendly = friendly;
+    this.type = type;
+    this.notes = notes;
+    this.desc = desc;
+    if (this.type == "active") this.active = false;
+    this.scan = scan;
+    this.end = end;
+    this.id = -1;
+    if (type == "base") this.id = 0;
   }
 }
+
+global.modules = {
+  base: new Module(
+    "Base",
+    "base",
+    "None",
+    "View active tasks and their locations",
+    () => {
+      if (!global.game.started) return null;
+
+      return Object.values(global.modules).sort((a, b) => a.id - b.id);
+    }
+  ),
+  cocoa: new Module(
+    "Make hot cocoa",
+    "active",
+    "None",
+    "Make hot cocoa to keep morale up",
+    () => {
+
+    }
+  ),
+  log1: new Module(
+    "Data log #1",
+    "passive",
+    "None",
+    "Read important ship data",
+    () => {
+
+    }
+  )
+}
+
 global.ids = { 0: global.modules.base };
 
 var ids = Array.from({length: Object.keys(global.modules).length - 1}, (_, i) => i + 1);

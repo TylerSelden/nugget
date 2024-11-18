@@ -17,6 +17,14 @@ window.onload = function() {
   Socket.init(params.get('addr'), params.get('port'), params.get('name'));
 
   QR.start();
+
+  //// dev
+  elems.dev_scan.addEventListener("keyup", (evt) => {
+    if (evt.key == "Enter") {
+      scan(elems.dev_scan.value);
+      elems.dev_scan.value = "";
+    }
+  });
 }
 
 addEventListener("error", (evt) => {

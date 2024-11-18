@@ -1,66 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Under Pressure</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-</head>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Under Pressure</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+  </head>
 
-<body>
-  <nav class="navbar navbar-expand-lg navbar-custom">
-    <a class="navbar-brand m-3" href="#">Under Pressure</a>
-  </nav>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-custom">
+      <a class="navbar-brand m-3" href="#" id="navbar">Under Pressure</a>
+      <!-- //// dev -->
+      <input type="text" placeholder="Dev scan" id="dev_scan" autofocus value="0" />
+    </nav>
 
-  <div class="content-container">
-    <!-- Loading Screen -->
-    <div id="loading_screen" class="screen text-center">
-      <div class="spinner-border text-danger mb-4" role="status">
-        <span class="visually-hidden">Loading...</span>
+    <div class="content-container">
+      <!-- Loading Screen -->
+      <div id="loading_screen" class="screen text-center">
+        <div class="spinner-border text-danger mb-4" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+        <h1>Loading...</h1>
       </div>
-      <h1>Loading...</h1>
-    </div>
 
-    <!-- Error Screen -->
-    <div id="err_screen" class="screen text-center hidden">
-      <h1 id="err_header">Connection Lost</h1>
-      <p id="err_msg">It seems you've been disconnected.</p>
-      <button class="btn btn-custom mt-4" onclick="window.location.href = '/'">Return to Home</button>
-    </div>
-
-    <!-- Main Screen -->
-    <div id="main_screen" class="screen text-center hidden">
-      <h1 id="main_header">Connecting...</h1>
-      <div id="qr_scanner" class="mx-auto">
-        <div id="reader" style="width: 100%; height: 100%;"></div>
+      <!-- Error Screen -->
+      <div id="err_screen" class="screen text-center hidden">
+        <h1 id="err_header">Connection Lost</h1>
+        <p id="err_msg">It seems you've been disconnected.</p>
+        <button class="btn btn-custom mt-4" onclick="window.location.href = '/'">Return to Home</button>
       </div>
-      <br>
-      <!-- Players -->
-      <h3>Players:</h3>
-      <h5 id="players"></h5>
-    </div>
+
+      <!-- Main Screen -->
+      <div id="main_screen" class="screen text-center hidden">
+        <h1 id="main_header">Initializing camera...</h1>
+        <div id="qr_scanner" class="mx-auto">
+          <div id="reader" style="width: 100%; height: 100%;"></div>
+        </div>
+        <br>
+        <!-- Players -->
+        <h3>Players:</h3>
+        <h5 id="players"></h5>
+      </div>
 
       <!-- Module Screens -->
-    <div id="modules_screen" class="screen text-center hidden">
-      <div class="module" id="base_module">
-        <h3>Base</h3>
-        <p id="base_desc">Click the button below to show you're ready to dive!</p>
-        <br>
-        <button id="base_ready" class="btn btn-custom btn-lg btn-block mt-3" onclick="modules.base.ready()">Ready</button>
-      </div>
-      <div class="module" id="module_2">
-        <h3>Module 2</h3>
-        <p>Module 2 details here...</p>
+      <div id="modules_screen" class="screen text-center hidden">
+        <div class="module" id="base_module">
+          <h3>Base</h3>
+          <h5 id="base_desc">Click the button below to show you're ready to dive!</h5>
+          <br>
+          <div id="base_list" class="hidden">
+            <p><strong>Active Tasks:</strong></p>
+            <table class="task-table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Name</th>
+                  <th>Notes</th>
+                </tr>
+              </thead>
+              <tbody id="base_tasks"></tbody>
+            </table>
+            <br>
+            <br>
+            <p><strong>Directory:</strong></p>
+            <table class="task-table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Name</th>
+                  <th>Description</th>
+                </tr>
+              </thead>
+              <tbody id="base_dir"></tbody>
+            </table>
+          </div>
+          <br>
+          <button id="base_ready" class="btn btn-custom btn-lg btn-block mt-3" onclick="modules.base.ready()">Ready</button>
+        </div>
+        <div class="module" id="module_2">
+          <h3>Module 2</h3>
+          <p>Module 2 details here...</p>
+        </div>
       </div>
     </div>
-  </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="js/html5-qrcode.min.js"></script>
-  <script src="script.js" type="module"></script>
-</body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/html5-qrcode.min.js"></script>
+    <script src="script.js" type="module"></script>
+  </body>
 
 </html>

@@ -34,14 +34,22 @@ function handle_msg(msg) {
     case "err":
       Utils.err("Something went wrong", msg.data);
       break;
+    case "init":
+      elems.navbar.innerText = msg.data.name;
+      break;
     case "players":
       if (!Game.players) Utils.show_screen("main");
       Utils.show_players(msg.data);
       break;
     case "scan":
       QR.stop();
-      console.log(msg.data);
       Modules.show(msg.data);
+      break;
+    case "start":
+      Game.started = true;
+      elems.main_header.innerText = "Game started!";
+      setTimeout(() => { elems.main_header.innerText = "Scan codes to use stations" }, 3000);
+      QR.start();
       break;
   }
 }
