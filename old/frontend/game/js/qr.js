@@ -7,7 +7,9 @@ export function start() {
   Utils.show_screen("main");
   if (qrScanner.state) return qrScanner.state = 2;
   qrScanner.state = 2;
-
+  
+  //// dev, no camera
+  return elems.main_header.innerTExt = "Go to Base to start";
   qrScanner.start(
     { facingMode: "environment" },
     {

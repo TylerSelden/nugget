@@ -43,6 +43,7 @@ window.modules = {
 }
 
 export function show(msg) {
+  console.log(msg);
   if (modules[msg.name].scan) modules[msg.name].scan(msg.data);
 
   Utils.show_screen("modules");

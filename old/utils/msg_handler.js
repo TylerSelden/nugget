@@ -34,7 +34,7 @@ function join(conn, msg) {
   if (msg.name.trim() == "") return send(conn, "err", "Name cannot be empty.");
   if (msg.name.length > 12) return send(conn, "err", "Name is too long.");
   if (msg.name.length < 3) return send(conn, "err", "Name is too short.");
-  if (global.game.started) return send(conn, "err", "The game has already started.");
+  //// if (global.game.started) return send(conn, "err", "The game has already started.");
 
   // join
   global.clients[msg.name] = new Player(conn, msg.name);

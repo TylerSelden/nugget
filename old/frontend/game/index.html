@@ -8,6 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="modules.css">
   </head>
 
   <body>
@@ -71,7 +72,7 @@
                 <tr>
                   <th>#</th>
                   <th>Name</th>
-                  <th>Description</th>
+                  <th>Details</th>
                 </tr>
               </thead>
               <tbody id="base_dir"></tbody>
@@ -80,9 +81,17 @@
           <br>
           <button id="base_ready" class="btn btn-custom btn-lg btn-block mt-3" onclick="modules.base.ready()">Ready</button>
         </div>
-        <div class="module" id="module_2">
-          <h3>Module 2</h3>
-          <p>Module 2 details here...</p>
+        <div class="module" id="cocoa_module">
+          <h3>Make hot cocoa</h3>
+          <h5>Click the button below when it's over the green to make the perfect hot cocoa!</h5>
+          <div class="slider-container position-relative my-4">
+    <div class="slider-bg position-relative">
+      <div class="gradient-bar"></div>
+    </div>
+    <div id="slider-handle" class="slider-handle"></div>
+  </div>
+  <button id="stop_slider_btn" class="btn btn-custom mt-3">Stop Slider</button>
+  <p id="slider_result" class="mt-3"></p>
         </div>
       </div>
     </div>

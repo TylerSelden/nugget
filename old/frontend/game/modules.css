@@ -1,0 +1,32 @@
+/* Cocoa */
+.slider-container {
+  height: 50px;
+  max-width: 90%;
+  margin: 0 auto;
+  overflow: hidden;
+  border-radius: 10px;
+  background-color: #222;
+  position: relative;
+}
+
+.gradient-bar {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(to right, red, yellow, green, yellow, red);
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.slider-handle {
+  width: 20px;
+  height: 50px;
+  background-color: #f5f5f5;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 10px;
+  transform: translateX(-50%);
+  transition: left 0.05s;
+}
+
