@@ -1,15 +1,14 @@
 import React from "react";
 
 import Navbar from "../global/navbar";
-import Form from "./form";
 
-const Home = () => {
+const Game = () => {
   return (
     <div className="bg-dark">
       <Navbar />
-      <Form />
+      <h1>Hello, world! :)</h1>
     </div>
   );
 }
 
-export default Home;
+export default Game;

@@ -34,3 +34,28 @@ $table-border-color: #444;
 $table-color: $light;
 
 @import "~bootstrap/scss/bootstrap.scss";
+
+body {
+  display: flex;
+  flex-direction: column;
+  height: 100dvh;
+}
+
+.form-control {
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: $light;
+  color: $dark;
+  border-color: #ccc;
+}
+
+.form-control::placeholder {
+  color: #888;
+}
+
+.form-control:focus {
+  background-color: $light;
+  border-color: $primary;
+  color: #212121;
+}
