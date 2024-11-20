@@ -48,14 +48,37 @@ body {
   background-color: $light;
   color: $dark;
   border-color: #ccc;
+
+  &::placeholder {
+    color: #888;
+  }
+
+  &:focus {
+    background-color: $light;
+    border-color: $primary;
+    color: #212121;
+  }
 }
 
-.form-control::placeholder {
-  color: #888;
+.hidden {
+  display: none !important;
 }
 
-.form-control:focus {
-  background-color: $light;
-  border-color: $primary;
-  color: #212121;
+/* <a> hover styling */
+
+.screen {
+  height: 80vh;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+/* For FOUC */
+
+html {
+  visibility: visible;
 }
